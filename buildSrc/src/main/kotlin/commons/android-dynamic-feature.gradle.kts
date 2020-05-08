@@ -27,7 +27,6 @@ import extensions.addTestsDependencies
 import extensions.implementation
 import extensions.testImplementation
 import extensions.kapt
-import gradle.kotlin.dsl.accessors._8fbe50ab46e72ba67087bf0fa5fe6568.testImplementation
 
 plugins {
     id("com.android.dynamic-feature")
@@ -37,6 +36,7 @@ plugins {
     id("kotlin-allopen")
     id("androidx.navigation.safeargs.kotlin")
     id("com.vanniktech.android.junit.jacoco")
+    id("com.vanniktech.dependency.graph.generator")
 }
 
 android {

@@ -35,16 +35,17 @@ kotlinDslPluginOptions {
 }
 
 object PluginsVersions {
-    const val GRADLE_ANDROID = "3.5.1"
-    const val GRADLE_VERSIONS = "0.22.0"
-    const val KOTLIN = "1.3.50"
-    const val NAVIGATION = "2.1.0-beta02"
+    const val GRADLE_ANDROID = "3.5.3"
+    const val GRADLE_VERSIONS = "0.27.0"
+    const val KOTLIN = "1.3.61"
+    const val NAVIGATION = "2.1.0"
     const val JACOCO = "0.16.0-SNAPSHOT"
-    const val FABRIC = "1.31.0"
+    const val FABRIC = "1.31.2"
     const val DOKKA = "0.10.0"
-    const val KTLINT = "0.34.2"
-    const val SPOTLESS = "3.24.1"
-    const val DETEKT = "1.0.1"
+    const val KTLINT = "0.36.0"
+    const val SPOTLESS = "3.26.1"
+    const val DETEKT = "1.2.2"
+    const val GRAPH_GENERATOR = "0.6.0-SNAPSHOT"
 }
 
 dependencies {
@@ -54,6 +55,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-allopen:${PluginsVersions.KOTLIN}")
     implementation("androidx.navigation:navigation-safe-args-gradle-plugin:${PluginsVersions.NAVIGATION}")
     implementation("com.vanniktech:gradle-android-junit-jacoco-plugin:${PluginsVersions.JACOCO}")
+    implementation("com.vanniktech:gradle-dependency-graph-generator-plugin:${PluginsVersions.GRAPH_GENERATOR}")
     implementation("io.fabric.tools:gradle:${PluginsVersions.FABRIC}")
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:${PluginsVersions.DOKKA}")
     implementation("com.pinterest:ktlint:${PluginsVersions.KTLINT}")
