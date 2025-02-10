@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-import utils.createFabricProperties
 import dependencies.Dependencies
 import dependencies.DebugDependencies
 import dependencies.AnnotationProcessorsDependencies
 import extensions.addTestsDependencies
 import extensions.implementation
 import extensions.debugImplementation
-import extensions.getLocalProperty
-import extensions.buildConfigBooleanField
 import extensions.kapt
 
 plugins {
@@ -34,7 +31,6 @@ plugins {
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
     id(BuildPlugins.JACOCO)
     id(BuildPlugins.GRAPH_GENERATOR)
-    id(BuildPlugins.FABRIC)
 }
 
 allOpen {
@@ -55,26 +51,14 @@ android {
 
         vectorDrawables.useSupportLibrary = BuildAndroidConfig.SUPPORT_LIBRARY_VECTOR_DRAWABLES
         testInstrumentationRunner = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
-        testInstrumentationRunnerArguments = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER_ARGUMENTS
-    }
-
-    signingConfigs {
-        create(BuildType.RELEASE) {
-            keyAlias = getLocalProperty("signing.key.alias")
-            keyPassword = getLocalProperty("signing.key.password")
-            storeFile = file(getLocalProperty("signing.store.file"))
-            storePassword = getLocalProperty("signing.store.password")
-        }
+        testInstrumentationRunnerArguments.putAll(BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER_ARGUMENTS)
     }
 
     buildTypes {
         getByName(BuildType.RELEASE) {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName(name)
-
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             isTestCoverageEnabled = BuildTypeRelease.isTestCoverageEnabled
-            buildConfigBooleanField("ENABLE_CRASHLYTICS", BuildTypeRelease.isCrashlyticsEnabled)
         }
 
         getByName(BuildType.DEBUG) {
@@ -82,8 +66,6 @@ android {
             versionNameSuffix = BuildTypeDebug.versionNameSuffix
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
             isTestCoverageEnabled = BuildTypeDebug.isTestCoverageEnabled
-
-            buildConfigBooleanField( "ENABLE_CRASHLYTICS", BuildTypeDebug.isCrashlyticsEnabled)
         }
     }
 
@@ -100,8 +82,8 @@ android {
         BuildModules.Features.CHARACTERS_FAVORITES
     )
 
-    dataBinding {
-        isEnabled = true
+    buildFeatures {
+        dataBinding = true
     }
 
     androidExtensions {
@@ -145,10 +127,6 @@ junitJacoco {
     includeNoLocationClasses = true
 }
 
-afterEvaluate {
-    createFabricProperties(this)
-}
-
 dependencies {
     implementation(project(BuildModules.CORE))
 
@@ -159,7 +137,6 @@ dependencies {
     implementation(Dependencies.NAVIGATION_FRAGMENT)
     implementation(Dependencies.TIMBER)
     implementation(Dependencies.LOGGING)
-    implementation(Dependencies.CRASHLYTICS)
     implementation(Dependencies.PLAY_CORE)
     implementation(Dependencies.DAGGER)
 

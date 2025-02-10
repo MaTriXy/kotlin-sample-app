@@ -1,16 +1,16 @@
-## Kotlin Sample App
-[![CircleCI](https://circleci.com/gh/VMadalin/kotlin-sample-app/tree/master.svg?style=shield)](https://circleci.com/gh/VMadalin/kotlin-sample-app/tree/master)
-[![Codecov](https://codecov.io/gh/VMadalin/kotlin-sample-app/coverage.svg)](https://codecov.io/gh/VMadalin/kotlin-sample-app)
+## Android Components Architecture in a Modular Word
+[![CircleCI](https://circleci.com/gh/VMadalin/android-modular-architecture/tree/master.svg?style=shield)](https://circleci.com/gh/VMadalin/android-modular-architecture/tree/master)
+[![Codecov](https://codecov.io/gh/VMadalin/android-modular-architecture/coverage.svg)](https://codecov.io/gh/VMadalin/android-modular-architecture)
 [![Codacy](https://api.codacy.com/project/badge/Grade/5970b6648df0465588f9781ae6e3332e)](https://www.codacy.com/manual/VMadalin/kotlin-sample-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VMadalin/kotlin-sample-app&amp;utm_campaign=Badge_Grade)
 [![CodeStyle](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.61-blue.svg)](http://kotlinlang.org/)
-[![Gradle](https://img.shields.io/badge/gradle-6.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.10-blue.svg)](http://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/gradle-6.6.1-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 <img src="screenshots/demo/demo.gif" width="250" align="right" hspace="20">
 
-Kotlin Sample App is a sample project that presents modern, 2019 approach to [Android](https://www.android.com/) application development using [Kotlin](https://kotlinlang.org/) and latest tech-stack.
+Android Components Architecture in a Modular Word is a sample project that presents modern, 2020 approach to [Android](https://www.android.com/) application development using [Kotlin](https://kotlinlang.org/) and latest tech-stack.
 
 The goal of the project is to demonstrate best practices, provide a set of guidelines, and present modern Android
 application architecture that is modular, scalable, maintainable and testable. This application may look simple, but it
@@ -19,6 +19,7 @@ long application lifecycle management.
 
 ## Table of Contents
 
+-   [Mentions](https://github.com/VMadalin/kotlin-sample-app#mentions)
 -   [Development](https://github.com/VMadalin/kotlin-sample-app#development)
 -   [Design](https://github.com/VMadalin/kotlin-sample-app#design)
 -   [Architecture](https://github.com/VMadalin/kotlin-sample-app#architecture)
@@ -29,16 +30,26 @@ long application lifecycle management.
 -   [Authors](https://github.com/VMadalin/kotlin-sample-app#authors)
 -   [License](https://github.com/VMadalin/kotlin-sample-app#license)
 
+## Mentions
+
+The project received different mentions/reference from Android Developer Community:
+
+-   [Android Weekly](https://androidweekly.net/issues/issue-407) Newsletter that helps you to stay cutting-edge with your Android Development.
+-   [AndroidSweets](https://androidsweets.ongoodbits.com/2019/12/13/browsing-through-the-android-open-source-project-was-never-easier) Fresh news from Droid zone.
+-   [Android Awesome](https://github.com/JStumpp/awesome-android#code-examples) A curated list of awesome Android libraries and resources.
+-   [Droidcon](https://www.droidcon.com/news-detail?content-id=/repository/collaboration/Groups/spaces/droidcon_hq/Documents/public/news/android-news/Android%20Components%20Architecture%20in%20a%20Modular%20Word) Blog posts from leading authorities and video archive from droidcons around the world.
+-   [DroidconKE](https://github.com/droidconKE/droidconKE2020App#referencesresources-1) The official DroidconKE 2020 conference App.
+-   [Github trending](https://github.motakasoft.com/trending/?d=2019-12-11&l=all) See what the GitHub community is most excited about today.
+-   [KotlinBy](https://github.com/KotlinBy/awesome-kotlin#projects-back--1) A curated list of awesome Kotlin related stuff.
+-   [Reddit](https://www.reddit.com/r/Kotlin/comments/ew30x4/github_vmadalinkotlinsampleapp_android_sample_app/?utm_source=share&utm_medium=web2x): Discussion about Kotlin, a statically typed programming language for the JVM, Android, JavaScript, and native.
+
 ## Development
 
 ### Environment setup
 
-First off, you require the latest Android Studio 3.5.3 (or newer) to be able to build the app.
+First off, you require the latest Android Studio 4.1.0 (or newer) to be able to build the app.
 
-You need to supply API keys for the various services the app uses. That is currently Marvel and Fabric (Crashlytics). You can find information about how to gain access via these relevant links.
-
--   Marvel: https://developer.marvel.com/
--   Firebase: https://get.fabric.io/
+You need to supply keys for Marvel API. You can find information about how to gain access by using the [link](https://developer.marvel.com).
 
 When you obtain the keys, you can provide them to the app by putting the following in the `local.properties` project root file:
 
@@ -46,20 +57,6 @@ When you obtain the keys, you can provide them to the app by putting the followi
 #Marvel API KEYS
 marvel.key.public = <insert>
 marvel.key.private = <insert>
-
-#Fabric API KEYS
-fabric.key = <insert>
-fabric.secret = <insert>
-```
-
-Moreover, to sign your app for release you should generate an upload key and keystore following the [official documentation](https://developer.android.com/studio/publish/app-signing#sign-apk). Append the information used to generate it into `local.properties` project root file following the structure:
-
-```properties
-#Signing Config
-signing.key.alias = <insert>
-signing.key.password = <insert>
-signing.store.file = <insert>
-signing.store.password = <insert>
 ```
 
 ### Code style
@@ -198,7 +195,7 @@ But the idea is to have different environments target for Development and QA res
 
 The documentation is generated following [KDoc](https://kotlinlang.org/docs/reference/kotlin-doc.html) language (the equivalent of Java's [JavaDoc](https://en.wikipedia.org/wiki/Javadoc)) via documentation engine for Kotlin [Dokka](https://github.com/Kotlin/dokka).
 
-To consult it check this [link](https://vmadalin.github.io/kotlin-sample-app/) or open the project `/docs` directory.
+To consult it check this [link](https://vmadalin.github.io/android-modular-architecture/) or open the project `/docs` directory.
 
 ## Tech-stack
 
@@ -232,7 +229,6 @@ This project takes advantage of many popular libraries, plugins and tools of the
 -   [Espresso](https://developer.android.com/training/testing/espresso) - to write concise, beautiful, and reliable Android UI tests
 -   [Robolectric](https://github.com/robolectric/robolectric) - industry-standard unit testing framework for Android.
 -   [JUnit](https://github.com/junit-team/junit4) - a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.
--   [Mockito](https://github.com/nhaarman/mockito-kotlin) - most popular Mocking framework for unit tests written in Java.
 -   [Mockk](https://github.com/mockk/mockk) - provides DSL to mock behavior. Built from zero to fit Kotlin language.
 -   [AndroidX](https://github.com/android/android-test) - the androidx test library provides an extensive framework for testing Android apps.
 -   [and more...](https://github.com/VMadalin/kotlin-sample-app/blob/master/buildSrc/src/main/kotlin/dependencies/TestDependencies.kt)
@@ -323,7 +319,7 @@ Please feel free to post questions, recommendations, ideas, bugs by create [new 
 ## License
 
 ```license
-Copyright 2019 vmadalin.com
+Copyright 2019-2020 vmadalin.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
